@@ -11,3 +11,13 @@ tags: []
 #----------- List of plan items -----------
 items: []
 
+
+override:
+  workflows:
+    sbom:
+      jobs:
+        software-bill-of-materials:
+          steps:
+            - name: Run syft
+              uses: registry.jit.io/control-syft-alpine:not-hardened-main
+
