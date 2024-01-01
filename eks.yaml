@@ -73,6 +73,8 @@ Resources:
           Value: mike
         - Key: git_last_modified_at
           Value: "2020-07-15 20:22:37"
+        - Key: yor_name
+          Value: EKSIAMRole
   VPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -84,6 +86,8 @@ Resources:
           Value: !Sub '${AWS::StackName}-VPC'
         - Key: yor_trace
           Value: e672877b-726b-4bb5-bb27-f7e8edb7613e
+        - Key: yor_name
+          Value: VPC
   InternetGateway:
     Type: "AWS::EC2::InternetGateway"
     Properties:
@@ -92,6 +96,8 @@ Resources:
           Value: !Sub '${AWS::StackName}-Internet Gateway'
         - Key: yor_trace
           Value: c4e86b57-aa6a-4ff4-bef0-35905cc87db7
+        - Key: yor_name
+          Value: InternetGateway
   VPCGatewayAttachment:
     Type: "AWS::EC2::VPCGatewayAttachment"
     Properties:
@@ -108,6 +114,8 @@ Resources:
           Value: Public
         - Key: yor_trace
           Value: 99369f84-ea70-403b-91b1-1298c1d9b826
+        - Key: yor_name
+          Value: PublicRouteTable
   PrivateRouteTable01:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -133,6 +141,8 @@ Resources:
           Value: nimrodkor@gmail.com
         - Key: yor_trace
           Value: 444e964a-35b8-420d-97fa-80a9beac4225
+        - Key: yor_name
+          Value: PrivateRouteTable01
   PrivateRouteTable02:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -158,6 +168,8 @@ Resources:
           Value: 4e1da555-6cc5-42c8-a75f-6e8abd1cc1f1
         - Key: git_org
           Value: bridgecrewio
+        - Key: yor_name
+          Value: PrivateRouteTable02
   PublicRoute:
     DependsOn:
     - VPCGatewayAttachment
@@ -198,6 +210,8 @@ Resources:
           Value: !Sub '${AWS::StackName}-NatGatewayAZ1'
         - Key: yor_trace
           Value: 9a63423c-9c6e-4467-8a1e-b1fd9029281d
+        - Key: yor_name
+          Value: NatGateway01
   NatGateway02:
     DependsOn:
     - NatGatewayEIP2
@@ -226,6 +240,8 @@ Resources:
           Value: fb5ac0c1-ebb5-48dd-beab-2f6658041e52
         - Key: git_org
           Value: bridgecrewio
+        - Key: yor_name
+          Value: NatGateway02
   NatGatewayEIP1:
     DependsOn:
     - VPCGatewayAttachment
@@ -234,21 +250,23 @@ Resources:
       Domain: vpc
       Tags:
         - Key: git_file
-          Value: 1aab848a22a383d185f8d0d6ed344076f636769b
+          Value: eks.yaml
         - Key: git_commit
-          Value: mike
+          Value: 1aab848a22a383d185f8d0d6ed344076f636769b
         - Key: git_modifiers
-          Value: 2020-07-15 20:22:37
+          Value: mike
         - Key: git_last_modified_at
-          Value: mike@bridgecrew.io
+          Value: 2020-07-15 20:22:37
         - Key: git_last_modified_by
-          Value: nimrodkor@gmail.com
+          Value: mike@bridgecrew.io
         - Key: yor_trace
           Value: eyaliyahu
         - Key: git_org
           Value: bridgecrewio
         - Key: git_repo
           Value: cfngoat
+        - Key: yor_name
+          Value: NatGatewayEIP1
   NatGatewayEIP2:
     DependsOn:
     - VPCGatewayAttachment
@@ -272,6 +290,8 @@ Resources:
           Value: mike@bridgecrew.io
         - Key: yor_trace
           Value: 4e306793-ec95-48e0-b74a-88e152520518
+        - Key: yor_name
+          Value: NatGatewayEIP2
   PublicSubnet01:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -291,6 +311,8 @@ Resources:
           Value: !Sub "${AWS::StackName}-PublicSubnet01"
         - Key: yor_trace
           Value: 7c34a299-7166-44a5-8ce5-09c8c9beca84
+        - Key: yor_name
+          Value: PublicSubnet01
   PublicSubnet02:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -324,6 +346,8 @@ Resources:
           Value: nimrodkor@gmail.com
         - Key: yor_trace
           Value: 7c173256-a4fd-401b-bc74-4b1d528722b5
+        - Key: yor_name
+          Value: PublicSubnet02
   PrivateSubnet01:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -359,6 +383,8 @@ Resources:
           Value: 52127b2051fa27ca5168b17798cd4f63723a13f1
         - Key: git_modifiers
           Value: mike/nimrodkor
+        - Key: yor_name
+          Value: PrivateSubnet01
   PrivateSubnet02:
     Type: AWS::EC2::Subnet
     Metadata:
@@ -394,6 +420,8 @@ Resources:
           Value: bridgecrewio
         - Key: git_repo
           Value: cfngoat
+        - Key: yor_name
+          Value: PrivateSubnet02
   PublicSubnet01RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
@@ -436,6 +464,8 @@ Resources:
           Value: "2020-07-15 20:22:37"
         - Key: git_last_modified_by
           Value: mike@bridgecrew.io
+        - Key: yor_name
+          Value: ControlPlaneSecurityGroup
   EKSCluster:
     Type: AWS::EKS::Cluster
     Properties:
