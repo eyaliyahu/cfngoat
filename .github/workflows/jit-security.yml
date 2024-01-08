@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 20
     steps:
     - name: enrichment
-      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      uses: jitsecurity-controls/jit-github-action@avoid-caching
       with:
         security_control: registry.jit.io/control-enrichment-slim:remove-noisy-log
         
