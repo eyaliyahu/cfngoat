@@ -28,9 +28,9 @@ jobs:
     timeout-minutes: 20
     steps:
     - name: enrichment
-      uses: jitsecurity-controls/jit-github-action@avoid-caching
+      uses: jitsecurity-controls/jit-github-action@v4.0.6
       with:
-        security_control: registry.jit.io/control-enrichment-slim:remove-noisy-log
+        security_control: registry.jit.io/control-enrichment-slim:main
         
   iac-misconfig-detection-cloudformation:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection-cloudformation' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-iac-misconfiguration-detection'
@@ -98,6 +98,16 @@ jobs:
         security_control: registry.jit.io/control-syft-alpine:not-hardened-main
         fail_if_cannot_checkout: false
         
+  software-component-analysis-dotnet:
+    if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-dotnet' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    steps:
+    - name: trivy-dotnet
+      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      with:
+        security_control: registry.jit.io/control-trivy-dotnet-slim:main
+        
   software-component-analysis-go:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-go' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
     runs-on: ubuntu-20.04
@@ -140,6 +150,16 @@ jobs:
       with:
         security_control: registry.jit.io/control-osv-scanner-alpine:main
         security_control_output_file: /code/jit-report/enriched-osv-scanner-results.json
+        
+  static-code-analysis-c-cpp:
+    if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-c-cpp' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    steps:
+    - name: semgrep
+      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      with:
+        security_control: registry.jit.io/control-semgrep-alpine:main
         
   static-code-analysis-csharp:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-csharp' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
