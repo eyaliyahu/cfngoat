@@ -15,7 +15,7 @@ jobs:
   docker-scan:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'docker-scan' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-docker-scan'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: trivy
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -25,7 +25,7 @@ jobs:
   enrich:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'enrich' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-enrichment-code'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: enrichment
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -35,7 +35,7 @@ jobs:
   iac-misconfig-detection-cloudformation:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection-cloudformation' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-iac-misconfiguration-detection'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: kics
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -46,7 +46,7 @@ jobs:
   iac-misconfig-detection-pulumi:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection-pulumi' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-iac-misconfiguration-detection'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: kics
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -57,7 +57,7 @@ jobs:
   iac-misconfig-detection-terraform:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'iac-misconfig-detection-terraform' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-iac-misconfiguration-detection'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: kics
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -68,7 +68,7 @@ jobs:
   remediation-pr:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'remediation-pr' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-remediation-pr'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: remediation-pr
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -79,7 +79,7 @@ jobs:
   secret-detection:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'secret-detection' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-secret-detection'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: gitleaks
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -90,7 +90,7 @@ jobs:
   software-bill-of-materials:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-bill-of-materials' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sbom'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 65
     steps:
     - name: syft-alpine:not-hardened
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -98,20 +98,10 @@ jobs:
         security_control: registry.jit.io/control-syft-alpine:not-hardened-main
         fail_if_cannot_checkout: false
         
-  software-component-analysis-dotnet:
-    if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-dotnet' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
-    runs-on: ubuntu-20.04
-    timeout-minutes: 20
-    steps:
-    - name: trivy-dotnet
-      uses: jitsecurity-controls/jit-github-action@v4.0.6
-      with:
-        security_control: registry.jit.io/control-trivy-dotnet-slim:main
-        
   software-component-analysis-go:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-go' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: nancy
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -121,7 +111,7 @@ jobs:
   software-component-analysis-js:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-js' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: npm-audit
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -132,7 +122,7 @@ jobs:
   software-component-analysis-php:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-php' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: osv-scanner
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -143,7 +133,7 @@ jobs:
   software-component-analysis-python:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-component-analysis-python' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sca'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: osv-scanner
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -154,7 +144,7 @@ jobs:
   static-code-analysis-c-cpp:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-c-cpp' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -164,7 +154,7 @@ jobs:
   static-code-analysis-csharp:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-csharp' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -174,7 +164,7 @@ jobs:
   static-code-analysis-go:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-go' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: gosec
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -184,7 +174,7 @@ jobs:
   static-code-analysis-java:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-java' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -194,7 +184,7 @@ jobs:
   static-code-analysis-js:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-js' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -204,7 +194,7 @@ jobs:
   static-code-analysis-kotlin:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-kotlin' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -214,7 +204,7 @@ jobs:
   static-code-analysis-php:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-php' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -224,7 +214,7 @@ jobs:
   static-code-analysis-python-semgrep:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-python-semgrep' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -234,7 +224,7 @@ jobs:
   static-code-analysis-ruby:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-ruby' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -244,7 +234,7 @@ jobs:
   static-code-analysis-rust:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-rust' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -254,7 +244,7 @@ jobs:
   static-code-analysis-scala:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-scala' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
@@ -264,7 +254,7 @@ jobs:
   static-code-analysis-swift:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'static-code-analysis-swift' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sast'
     runs-on: ubuntu-20.04
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
     - name: semgrep
       uses: jitsecurity-controls/jit-github-action@v4.0.6
