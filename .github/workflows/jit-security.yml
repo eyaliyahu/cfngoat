@@ -90,7 +90,7 @@ jobs:
   software-bill-of-materials:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'software-bill-of-materials' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-sbom'
     runs-on: ubuntu-20.04
-    timeout-minutes: 65
+    timeout-minutes: 60
     steps:
     - name: syft-alpine:not-hardened
       uses: jitsecurity-controls/jit-github-action@v4.0.6
