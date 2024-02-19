@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 60
     steps:
     - name: trivy
-      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      uses: jitsecurity-controls/jit-github-action@sc-23621-jit-github-action-echo-the-entire-response
       with:
         security_control: registry.jit.io/control-trivy-alpine:main
         
@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 60
     steps:
     - name: enrichment
-      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      uses: jitsecurity-controls/jit-github-action@sc-23621-jit-github-action-echo-the-entire-response
       with:
         security_control: registry.jit.io/control-enrichment-slim:main
         
@@ -38,7 +38,7 @@ jobs:
     timeout-minutes: 60
     steps:
     - name: kics
-      uses: jitsecurity-controls/jit-github-action@v4.0.6
+      uses: jitsecurity-controls/jit-github-action@sc-23621-jit-github-action-echo-the-entire-response
       with:
         security_control: registry.jit.io/control-kics-alpine:main
         security_control_output_file: /code/jit-report/results.json
