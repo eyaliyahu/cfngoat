@@ -75,6 +75,14 @@ If you need direct support you can contact us at [info@bridgecrew.io](mailto:inf
 
 ## Existing vulnerabilities (Auto-Generated)
 
+### terraform scan results:
+
+|    | check_id    | file                                  | resource        | check_name                                                           | guideline                                                                                                                              |
+|----|-------------|---------------------------------------|-----------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|  0 | CKV2_AWS_11 | /jit_iac_misconfiguation_test_file.tf | aws_vpc.dev-vpc | Ensure VPC flow logging is enabled in all VPCs                       | https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-9-enable-vpc-flow-logging |
+|  1 | CKV2_AWS_12 | /jit_iac_misconfiguation_test_file.tf | aws_vpc.dev-vpc | Ensure the default security group of every VPC restricts all traffic | https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4                   |
+
+---
 ### cloudformation scan results:
 
 |    | check_id    | file          | resource                                  | check_name                                                                                                                                                                                               | guideline                                                                                                                                                                                        |
