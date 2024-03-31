@@ -5,6 +5,11 @@ applications:
   exclude_paths: []
   target_url: https://docs.jit.io
   type: web
+github_branch_protection:
+  organization:
+    amount_of_required_reviews: 1
+    required_status_checks:
+    - "\u05E9\u05D2\u05D2"
 resource_management:
   runner_config:
     job_execution_timeout_minutes: 40
