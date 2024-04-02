@@ -27,6 +27,9 @@ items:
       jitsecurity-controls/jit-plans/items/runtime/item-web-app-scanner.yml@latest
   - name: Scan your code dependencies for vulnerabilities (SCA)
     uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
+  - name: Scan your Dockerfiles for vulnerabilities
+    uses: >-
+      jitsecurity-controls/jit-plans/items/infrastructure/item-container-scan.yml@latest
 override:
   workflows:
     sbom:
