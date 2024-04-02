@@ -48,6 +48,9 @@ items:
   - name: Limit the creation of public repos
     uses: >-
       jitsecurity-controls/jit-plans/items/external_exposure/item-external-exposure-limit-creation-repo.yml@latest
+  - name: Detect GitHub misconfigurations
+    uses: >-
+      jitsecurity-controls/jit-plans/items/third_party_app/item-github-misconfiguration.yml@latest
 override:
   workflows:
     sbom:
