@@ -33,6 +33,21 @@ items:
   - name: Protect code changes by properly setting branch protection
     uses: >-
       jitsecurity-controls/jit-plans/items/branch_protection/item-branch-protect-code-changes.yml@latest
+  - name: There are no dormant GitHub users
+    uses: >-
+      jitsecurity-controls/jit-plans/items/access_management/item-access-management-dormant-users.yml@latest
+  - name: Limit user permissions to follow the least privilege principle
+    uses: >-
+      jitsecurity-controls/jit-plans/items/access_management/item-access-management-least-privilege.yml@latest
+  - name: Enable multi-factor authentication for members
+    uses: >-
+      jitsecurity-controls/jit-plans/items/access_management/item-access-management-mfa.yml@latest
+  - name: Set desired branch protection configuration
+    uses: >-
+      jitsecurity-controls/jit-plans/items/branch_protection/item-branch-set-config.yml@latest
+  - name: Limit the creation of public repos
+    uses: >-
+      jitsecurity-controls/jit-plans/items/external_exposure/item-external-exposure-limit-creation-repo.yml@latest
 override:
   workflows:
     sbom:
