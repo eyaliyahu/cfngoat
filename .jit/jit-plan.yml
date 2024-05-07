@@ -13,6 +13,3 @@ items:
       jitsecurity-controls/jit-plans/items/code/item-code-vulnerability.yml@latest
   - name: Scan code for hard-coded secrets
     uses: jitsecurity-controls/jit-plans/items/code/item-secret-detection.yml@latest
-  - name: Jit Context
-    uses: >-
-      jitsecurity-controls/jit-plans/items/jit-context/item-jit-context-analysis.yml@latest
